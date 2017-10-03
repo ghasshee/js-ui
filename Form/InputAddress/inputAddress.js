@@ -16,7 +16,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+//import { connect } from 'react-redux';
 
 import util from '@parity/api/util';
 import { nodeOrStringProptype } from '@parity/shared/util/proptypes';
@@ -190,7 +190,8 @@ function mapStateToProps (state, props) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(InputAddress);
+export default InputAddress;
+// connect(
+//   mapStateToProps,
+//   null
+// )(InputAddress);
