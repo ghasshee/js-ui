@@ -17,18 +17,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { bonds } from 'oo7-parity';
+import { ReactiveComponent } from 'oo7-react';
 
 import FileSaver from 'file-saver';
 
 import Button from '../../Button';
 import { FileDownloadIcon } from '../../Icons';
 
-export default class ActionbarExport extends Component {
+export default class ActionbarExport extends ReactiveComponent {
+  constructor(){
+    super(['content']);
+  }
+
   static propTypes = {
-    content: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object
-    ]).isRequired,
     filename: PropTypes.string.isRequired,
     className: PropTypes.string
   }
@@ -52,7 +54,8 @@ export default class ActionbarExport extends Component {
   }
 
   handleExport = () => {
-    const { filename, content } = this.props;
+    const { filename } = this.props;
+    const { content } = this.state;
     const text = JSON.stringify(content, null, 4);
     const blob = new Blob([ text ], { type: 'application/json' });
 
